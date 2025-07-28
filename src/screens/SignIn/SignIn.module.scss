@@ -1,0 +1,18 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100dvw;
+}
+
+.form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-inline: 1rem;
+}
+
+.title {
+  text-align: center;
+}

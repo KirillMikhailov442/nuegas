@@ -1,0 +1,55 @@
+'use client'
+
+import type { FC } from 'react';
+import styles from './Employee.module.scss';
+import { Avatar } from '@chakra-ui/react';
+import { EllipsisVertical, Pencil, Trash } from 'lucide-react';
+import { Dropdown, type MenuProps } from 'antd';
+import useAppDispatch from '@/hooks/useAppDispatch';
+import { openModal } from '@/store/slices/modals';
+import Link from 'next/link';
+
+const EmoloyeeCard: FC = () => {
+  const dispatch = useAppDispatch();
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      icon: <Pencil size={20} />,
+      label: 'Редактировать',
+      onClick: () => dispatch(openModal({ key: 'editEmployee' })),
+    },
+    {
+      key: '2',
+      icon: <Trash size={20} />,
+      label: 'Удалить',
+      danger: true,
+      onClick: () => dispatch(openModal({ key: 'deleteEmployee' })),
+    },
+  ];
+  return (
+    <Dropdown
+      menu={{ items }}
+      trigger={['contextMenu']}>
+      <li className={styles.card}>
+        <Dropdown
+          menu={{ items }}
+          trigger={['click']}>
+          <button className={styles.menu}>
+            <EllipsisVertical size={20} />
+          </button>
+        </Dropdown>
+        <div className={styles.up}>
+          <Avatar name="Fake" />
+          <h6 className={styles.fullName}>Антон Антонович</h6>
+        </div>
+        <Link
+          href={'/'}
+          className={styles.down}>
+          12 Задача
+        </Link>
+      </li>
+    </Dropdown>
+  );
+};
+
+export default EmoloyeeCard;

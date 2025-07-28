@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@import './libs.scss';
+@import './colors.css';
+@import './vars.scss';
+
+.wrapper {
+  display: flex;
+  min-height: 100dvh;
+  max-width: 100dvw;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 1440px;
+  margin-inline: auto;
+  padding: 0.5rem 10px;
+}
+
+html {
+  font-size: 16px;
+
+  @media (max-width: $tablet) {
+    font-size: 14px;
+  }
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fafafa !important;
+}
+
+.main {
+  margin-left: 250px;
+  flex-grow: 1;
+
+  @media (max-width: $tablet) {
+    margin-left: 0px;
+    margin-top: var(--header-height);
+    margin-bottom: calc(var(--bottom-bar-height) + 50px);
+  }
+}
+
+h6 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h1 {
+  font-size: 2.75rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+}
+
+h4,
+h3,
+h2,
+h1 {
+  font-weight: 600;
+}
+
+ul, li{
+  list-style: none;
+}

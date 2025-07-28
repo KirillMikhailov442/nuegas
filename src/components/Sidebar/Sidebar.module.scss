@@ -1,0 +1,50 @@
+@use '@styles/vars.scss' as *;
+
+.aside {
+  width: 250px;
+  padding: 2rem;
+  background-color: var(--primary-0);
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0px;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.list {
+  margin-top: 3.75rem;
+}
+
+.item {
+  margin-bottom: 1rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--secondary-300);
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: color 0.4s ease;
+
+  &:hover {
+    color: var(--secondary-500);
+  }
+}
+
+.active {
+  color: var(--secondary-500);
+  background-color: var(--secondary-200);
+}

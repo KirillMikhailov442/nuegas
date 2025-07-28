@@ -1,0 +1,12 @@
+@use '@styles/vars.scss' as *;
+
+.home {
+  margin-left: 250px;
+  flex-grow: 1;
+
+  @media (max-width: $tablet) {
+    margin-left: 0px;
+    margin-top: var(--header-height);
+    margin-bottom: calc(var(--bottom-bar-height) + 50px);
+  }
+}

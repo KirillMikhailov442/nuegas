@@ -1,0 +1,85 @@
+@use '@styles/vars.scss' as *;
+
+.page {
+  display: flex;
+  margin: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.content {
+  flex-basis: 820px;
+  background-color: var(--primary-0);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--primary-200);
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+.img {
+  min-height: 250px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.side {
+  flex-basis: 320px;
+  background-color: var(--primary-0);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--primary-200);
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.field {
+  margin-bottom: 1.5rem;
+
+  & h4 {
+    margin-bottom: 1rem;
+  }
+}
+
+.list {
+  & li {
+    margin-bottom: 10px;
+  }
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.date,
+.employees {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  & span {
+    line-height: 1;
+  }
+}
+
+@media (max-width: $tablet) {
+  .page {
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  .side,
+  .content {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
