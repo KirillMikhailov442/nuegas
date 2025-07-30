@@ -1,10 +1,11 @@
-import type { MetadataRoute } from 'next'
- 
+import { SITE_DESCRIPTION, SITE_NAME } from '@/configs/SEO';
+import type { MetadataRoute } from 'next';
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Next.js PWA',
-    short_name: 'NextPWA',
-    description: 'A Progressive Web App built with Next.js',
+    name: SITE_NAME,
+    short_name: SITE_NAME,
+    description: SITE_DESCRIPTION,
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
@@ -23,18 +24,18 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        "src":"../../public/screenshots/desktop.jpg",
-        "sizes":"1280x720",
-        "type":"image/jpg",
-        "form_factor":"wide",
-        "label":"Главный экран на десктопе"
+        src: '../../public/screenshots/desktop.jpg',
+        sizes: '1280x720',
+        type: 'image/jpg',
+        form_factor: 'wide',
+        label: 'Главный экран на десктопе',
       },
       {
-        "src":"../../public/screenshots/mobile.jpg",
-        "sizes":"360x640",
-        "type":"image/jpg",
-        "label":"Главный экран на мобилке"
-      }
-    ]
-  }
+        src: '../../public/screenshots/mobile.jpg',
+        sizes: '360x640',
+        type: 'image/jpg',
+        label: 'Главный экран на мобилке',
+      },
+    ],
+  };
 }

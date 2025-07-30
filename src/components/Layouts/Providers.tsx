@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import chakraTheme from '@styles/theme';
+import chakraTheme from '@/configs/chakraTheme';
 import { ChakraProvider } from '@chakra-ui/react';
 import type { FC, ReactNode } from 'react';
 import { Provider } from 'react-redux';

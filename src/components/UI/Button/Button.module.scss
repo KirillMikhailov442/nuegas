@@ -32,3 +32,28 @@
 .medium {
   padding: 0.5rem 1rem;
 }
+
+.danger {
+  border-radius: 10px;
+  background-color: var(--error-600);
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.5s ease;
+  outline: none;
+}
+
+.secondary {
+  background-color: var(--secondary-200);
+  color: var(--secondary-500);
+  border-radius: 10px;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-200);
+  }
+}

@@ -1,9 +1,8 @@
-import EmployeesScreen from "@/screens/Employees/Employees";
-import { Metadata, NextPage } from "next";
+import EmployeesScreen from '@/screens/Employees';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Персонал"
-}
+  title: 'Персонал',
+};
 
-const EmployeesPage: NextPage = () => <EmployeesScreen/>
-export default EmployeesPage
+export default EmployeesScreen;
