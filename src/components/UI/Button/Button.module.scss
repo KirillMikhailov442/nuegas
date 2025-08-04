@@ -44,6 +44,12 @@
   gap: 8px;
   transition: all 0.5s ease;
   outline: none;
+
+  &:disabled {
+    background-color: var(--secondary-200);
+    color: var(--secondary-300);
+    cursor: no-drop;
+  }
 }
 
 .secondary {

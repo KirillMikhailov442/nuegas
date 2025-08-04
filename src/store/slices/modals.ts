@@ -21,6 +21,12 @@ const initialState = {
     createTask: '',
     editTask: '',
     deleteTask: '',
+    createTool: '',
+    editTool: '',
+    deleteTool: '',
+    createEmployee: '',
+    editEmployee: '',
+    deleteEmployee: '',
   },
 };
 export type PayloadKeys = keyof typeof initialState.visibles;

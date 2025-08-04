@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { Avatar } from '@chakra-ui/react';
-import { EllipsisVertical, Pencil, Trash } from 'lucide-react';
+import { EllipsisVertical, Trash } from 'lucide-react';
 import { Dropdown, type MenuProps } from 'antd';
 import useAppDispatch from '@/hooks/useAppDispatch';
 import { openModal } from '@/store/slices/modals';
@@ -13,12 +13,6 @@ const EmoloyeeCard: FC = () => {
   const items: MenuProps['items'] = [
     {
       key: '1',
-      icon: <Pencil size={20} />,
-      label: 'Редактировать',
-      onClick: () => dispatch(openModal({ key: 'editEmployee' })),
-    },
-    {
-      key: '2',
       icon: <Trash size={20} />,
       label: 'Удалить',
       danger: true,
@@ -27,9 +21,9 @@ const EmoloyeeCard: FC = () => {
   ];
   return (
     <Dropdown menu={{ items }} trigger={['contextMenu']}>
-      <li className="p-4 rounded-lg relative bg-[var(--primary-0)] border border-solid border-[var(--primary-200)]">
+      <li className="c-border p-4 rounded-lg relative bg-[var(--primary-0)] border border-solid border-[var(--primary-200)]">
         <Dropdown menu={{ items }} trigger={['click']}>
-          <button className="absolute top-6 right-6  text-[var(--secondary-500)] p-2">
+          <button className="absolute top-6 right-4  text-[var(--secondary-500)] p-2">
             <EllipsisVertical size={20} />
           </button>
         </Dropdown>

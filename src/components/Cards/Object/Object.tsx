@@ -1,49 +1,57 @@
-'use client'
+'use client';
 
 import type { FC } from 'react';
 import styles from './Object.module.scss';
-import project_img from '@images/project.jpg';
 import { Avatar, AvatarGroup, Progress } from '@chakra-ui/react';
-import { Calendar, Pencil, Trash } from 'lucide-react';
-import { Dropdown, type MenuProps } from 'antd';
+import { Pencil, Trash } from 'lucide-react';
+import { Dropdown, Typography, type MenuProps } from 'antd';
 import useAppDispatch from '@/hooks/useAppDispatch';
-import { openModal } from '@/store/slices/modals';
+import { openModal, setModalParam } from '@/store/slices/modals';
 import Link from 'next/link';
 import Image from 'next/image';
+import { IProject } from '@/types/Project';
 
-const ObjectCard: FC = () => {
+const ObjectCard: FC<IProject> = ({ id, title, img, customer }) => {
   const dispatch = useAppDispatch();
   const items: MenuProps['items'] = [
     {
       key: '1',
       icon: <Pencil size={20} />,
       label: 'Редактировать',
-      onClick: () => dispatch(openModal({ key: 'editObject' })),
+      onClick: () => {
+        dispatch(setModalParam({ key: 'editObject', value: id }));
+        dispatch(openModal({ key: 'editObject' }));
+      },
     },
     {
       key: '2',
       icon: <Trash size={20} />,
       label: 'Удалить',
-      onClick: () => dispatch(openModal({ key: 'deleteObject' })),
+      onClick: () => {
+        dispatch(setModalParam({ key: 'deleteObject', value: id }));
+        dispatch(openModal({ key: 'deleteObject' }));
+      },
       danger: true,
     },
   ];
   return (
-    <Dropdown
-      menu={{ items }}
-      trigger={['contextMenu']}>
+    <Dropdown menu={{ items }} trigger={['contextMenu']}>
       <li>
-        <Link
-          href={'/objects/1'}
-          className={styles.card}>
+        <Link href={`/objects/${id}`} className={styles.card}>
           <Image
             className={styles.img}
-            src={project_img}
+            src={img}
+            width={200}
+            height={50}
             loading="lazy"
             alt="Проект заголовок"
           />
           <footer className={styles.footer}>
-            <p className={styles.title}>Мой объект</p>
+            <Typography.Paragraph
+              className={styles.title}
+              ellipsis={{ rows: 2 }}>
+              {title}
+            </Typography.Paragraph>
             <div className={styles.progressbar}>
               <div>
                 <h6>Прогресс</h6>
@@ -56,12 +64,10 @@ const ObjectCard: FC = () => {
               />
             </div>
             <footer className={styles.down}>
-              <p className={styles.date}>
-                <Calendar size={20} /> <span>12 Апреля 2023</span>
-              </p>
-              <AvatarGroup
-                max={3}
-                size={'xs'}>
+              <Typography.Paragraph ellipsis className={styles.customer}>
+                {customer}
+              </Typography.Paragraph>
+              <AvatarGroup max={3} size={'xs'}>
                 <Avatar name="a" />
                 <Avatar name="bss" />
                 <Avatar name="caa" />

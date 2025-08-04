@@ -8,21 +8,25 @@ import * as Yup from 'yup';
 import { toast } from 'sonner';
 import useAppDispatch from '@/hooks/useAppDispatch';
 import { closeModal } from '@/store/slices/modals';
+import { useToolCreate } from '@/hooks/useTool';
 
 const CreateToolModal = () => {
   const dispatch = useAppDispatch();
+  const creat = useToolCreate(() => {
+    toast.success('Успешно создано');
+    dispatch(closeModal({ key: 'createTool' }));
+  });
   const formik = useFormik({
     initialValues: {
-      title: '',
+      name: '',
     },
     enableReinitialize: true,
     validateOnBlur: false,
     validationSchema: Yup.object({
-      title: Yup.string().trim().required('Введите название'),
+      name: Yup.string().trim().required('Введите название'),
     }),
-    onSubmit: () => {
-      toast.success('Успешно создано');
-      dispatch(closeModal({ key: 'createTool' }));
+    onSubmit: ({ name }) => {
+      creat.mutate({ name });
     },
   });
   return (
@@ -31,12 +35,14 @@ const CreateToolModal = () => {
         <Input
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          name="title"
-          error={formik.errors.title}
+          name="name"
+          error={formik.errors.name}
           placeholder="Введите название"
           label="Название"
         />
-        <Button disabled={Object.keys(formik.errors).length > 0}>
+        <Button
+          isLoading={creat.isLoading}
+          disabled={Object.keys(formik.errors).length > 0}>
           Создать
         </Button>
       </form>

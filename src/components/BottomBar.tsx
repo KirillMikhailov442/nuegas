@@ -10,11 +10,10 @@ const BottomBar: FC = () => {
   const dispatch = useAppDispatch();
   const pathName = usePathname();
   const navigate = useRouter();
-  console.log(pathName);
 
   const { id } = useParams<{ id: string }>();
   return (
-    <nav className="hidden max-md:flex justify-center items-center gap-6 fixed bottom-0 w-full bg-[var(--primary-0)] h-[var(--bottom-bar-height)]">
+    <nav className="c-t-border hidden max-md:flex justify-center items-center gap-6 fixed bottom-0 w-full bg-[var(--primary-0)] h-[var(--bottom-bar-height)]">
       <Link
         className={clsx(
           'flex items-center gap-1 flex-col !text-[var(--secondary-300)]',

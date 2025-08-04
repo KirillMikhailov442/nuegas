@@ -84,3 +84,11 @@ ul,
 li {
   list-style: none;
 }
+
+.c-border {
+  border: 1.5px solid var(--primary-200);
+}
+
+.c-t-border {
+  border-top: 1.5px solid var(--primary-200);
+}

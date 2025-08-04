@@ -8,9 +8,11 @@ import * as Yup from 'yup';
 import { toast } from 'sonner';
 import useAppDispatch from '@/hooks/useAppDispatch';
 import { closeModal } from '@/store/slices/modals';
+import useAppSelector from '@/hooks/useAppSelector';
 
 const EditToolModal = () => {
   const dispatch = useAppDispatch();
+  const id = useAppSelector(state => state.modals.params.editTool);
   const formik = useFormik({
     initialValues: {
       title: '',

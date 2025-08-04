@@ -10,6 +10,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   size?: 'small' | 'medium' | 'big';
   disabled?: boolean;
+  isLoading?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({ variant, ...props }) => {

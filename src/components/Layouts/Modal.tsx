@@ -50,7 +50,7 @@ const ModalLayout: FC<IModal> = ({
   };
   return (
     <Modal isOpen={isOpen} size={size} onClose={localHandleClose}>
-      <ModalOverlay className="h-full" />
+      <ModalOverlay className="h-full backdrop-blur-[2px]" />
       <ModalContent className="p-0 flex items-center relative bg-[var(--primary-0)] !rounded-5">
         <ModalHeader className="flex items-center justify-between w-full">
           <h5>{title}</h5>
