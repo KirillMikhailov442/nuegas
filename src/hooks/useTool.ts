@@ -1,12 +1,12 @@
 import { IToolAdd, IToolsGet, IToolUpdate } from '@/types/Tool';
 import ToolService from '@/services/Tools';
 import { AxiosError } from 'axios';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from 'react-query';
 
-export const useToolGetAll = () => {
-  return useMutation({
-    mutationKey: ['tools'],
-    mutationFn: (data: IToolsGet) => ToolService.getAll(data),
+export const useToolGetAll = (data: IToolsGet) => {
+  return useQuery({
+    queryKey: ['tools'],
+    queryFn: () => ToolService.getAll(data),
   });
 };
 

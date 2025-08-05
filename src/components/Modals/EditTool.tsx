@@ -15,7 +15,7 @@ const EditToolModal = () => {
   const id = useAppSelector(state => state.modals.params.editTool);
   const formik = useFormik({
     initialValues: {
-      title: '',
+      name: '',
     },
     enableReinitialize: true,
     validateOnBlur: false,
@@ -23,7 +23,7 @@ const EditToolModal = () => {
       title: Yup.string().trim().required('Введите название'),
     }),
     onSubmit: () => {
-      toast.success('Успешно создано');
+      toast.success('Успешно изменено');
       dispatch(closeModal({ key: 'createTool' }));
     },
   });
@@ -33,8 +33,8 @@ const EditToolModal = () => {
         <Input
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          name="title"
-          error={formik.errors.title}
+          name="name"
+          error={formik.errors.name}
           placeholder="Введите название"
           label="Название"
         />

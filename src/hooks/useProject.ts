@@ -1,5 +1,5 @@
 import ProjectService from '@/services/Projects';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation } from 'react-query';
 import {
   IProject,
   IProjectCreate,
@@ -9,12 +9,13 @@ import {
 import { AxiosError } from 'axios';
 
 export const useProjectGetAll = (
+  data: IProjectsGet,
   onSuccess?: (data: { data: IProjectResponse }) => void,
   onError?: (error: AxiosError<{ message: string }>) => void,
 ) => {
-  return useMutation({
-    mutationKey: ['projects'],
-    mutationFn: (data: IProjectsGet) => ProjectService.getAll(data),
+  return useQuery({
+    queryKey: ['projects'],
+    queryFn: () => ProjectService.getAll(data),
     onSuccess,
     onError,
   });
@@ -39,17 +40,29 @@ export const useProjectUpdate = () => {
   });
 };
 
-export const useProjectDelete = () => {
+export const useProjectDelete = (
+  onSuccess?: () => void,
+  onError?: (error: AxiosError<{ message: string }>) => void,
+) => {
   return useMutation({
     mutationKey: ['deleteProject'],
     mutationFn: (id: string) => ProjectService.delete(id),
+    onSuccess,
+    onError,
   });
 };
 
-export const useProjectGetOne = (id: string) => {
+export const useProjectGetOne = (
+  id: string,
+  onSuccess?: (data: IProject) => void,
+  onError?: (error: AxiosError<{ message: string }>) => void,
+) => {
   return useQuery({
     queryKey: ['project', id],
     queryFn: () => ProjectService.getOne(id),
     enabled: false,
+    select: data => data.data,
+    onSuccess,
+    onError,
   });
 };

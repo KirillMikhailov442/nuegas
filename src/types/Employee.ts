@@ -2,6 +2,9 @@ import { IPagination } from './Request';
 
 export interface IEmployee {
   id: string;
+  name: string;
+  surname: string;
+  img: string;
 }
 
 export type IEmployeeCreate = Omit<IEmployee, 'id'>;
@@ -12,7 +15,7 @@ export interface IEmployeesGet {
   pagination?: IPagination;
 }
 
-export interface IEmployeeResponse {
+export interface IEmployeesGetAllResponse {
   pageItems: IEmployee[];
   count: number;
 }

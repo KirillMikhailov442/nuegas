@@ -1,11 +1,19 @@
-import { ITool, IToolAdd, IToolsGet, IToolUpdate } from '@/types/Tool';
+import {
+  ITool,
+  IToolAdd,
+  IToolResponse,
+  IToolsGet,
+  IToolUpdate,
+} from '@/types/Tool';
 import { axiosBase } from './axiosInstance';
 
 class ToolsService {
   private readonly baseUrl = '/company';
 
   public getAll(data: IToolsGet) {
-    return axiosBase.post<ITool>(`${this.baseUrl}/getTools`, data);
+    return axiosBase.get<IToolResponse>(`${this.baseUrl}/getTools`, {
+      params: data,
+    });
   }
 
   public create(data: IToolAdd) {

@@ -9,15 +9,15 @@ import { closeModal, removeModalParam } from '@/store/slices/modals';
 import useAppSelector from '@/hooks/useAppSelector';
 import { useToolDelete } from '@/hooks/useTool';
 import { toast } from 'sonner';
+import { useQueryClient } from 'react-query';
 
 const DeleteToolModal: FC = () => {
   const dispatch = useAppDispatch();
+  const query = useQueryClient();
   const id = useAppSelector(state => state.modals.params.deleteTool);
   const deleteTool = useToolDelete(
     () => {
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
+      query.invalidateQueries(['tools']);
       dispatch(closeModal({ key: 'deleteTool' }));
       dispatch(removeModalParam({ key: 'deleteTool' }));
       toast.success('Успешно удалено');

@@ -4,20 +4,9 @@ import ObjectCard from '@/components/Cards/Object/Object';
 import { useProjectGetAll } from '@/hooks/useProject';
 import { Skeleton } from '@chakra-ui/react';
 import { NextPage } from 'next';
-import { useEffect } from 'react';
-import { Else, If } from 'react-if';
 
 const ObjectsScreen: NextPage = () => {
-  const projects = useProjectGetAll();
-
-  useEffect(() => {
-    projects.mutate({
-      pagination: {
-        page: 1,
-        itemsPerPage: 10,
-      },
-    });
-  }, []);
+  const projects = useProjectGetAll({});
 
   if (projects.isLoading) {
     return (

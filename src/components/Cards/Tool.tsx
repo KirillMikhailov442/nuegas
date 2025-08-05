@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { EllipsisVertical, Trash } from 'lucide-react';
+import { EllipsisVertical, Pencil, Trash } from 'lucide-react';
 import { Dropdown, type MenuProps } from 'antd';
 import useAppDispatch from '@/hooks/useAppDispatch';
 import { openModal, setModalParam } from '@/store/slices/modals';
@@ -12,6 +12,15 @@ const ToolCard: FC<ITool> = ({ id, name }) => {
   const items: MenuProps['items'] = [
     {
       key: '1',
+      icon: <Pencil size={20} />,
+      label: 'Редактировать',
+      onClick: () => {
+        dispatch(setModalParam({ key: 'editTool', value: id }));
+        dispatch(openModal({ key: 'editTool' }));
+      },
+    },
+    {
+      key: '2',
       icon: <Trash size={20} />,
       label: 'Удалить',
       danger: true,

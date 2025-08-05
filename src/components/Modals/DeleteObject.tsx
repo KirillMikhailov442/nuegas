@@ -5,10 +5,22 @@ import ModalLayout from '@/components/Layouts/Modal';
 import { CircleAlert } from 'lucide-react';
 import Button from '@/components/UI/Button';
 import useAppDispatch from '@/hooks/useAppDispatch';
-import { closeModal } from '@/store/slices/modals';
+import { closeModal, removeModalParam } from '@/store/slices/modals';
+import { useProjectDelete } from '@/hooks/useProject';
+import { toast } from 'sonner';
+import useAppSelector from '@/hooks/useAppSelector';
+import { useQueryClient } from 'react-query';
 
 const DeleteObjectModal: FC = () => {
   const dispatch = useAppDispatch();
+  const query = useQueryClient();
+  const id = useAppSelector(state => state.modals.params.deleteObject);
+  const deleteObject = useProjectDelete(() => {
+    query.invalidateQueries(['projects']);
+    dispatch(closeModal({ key: 'deleteObject' }));
+    dispatch(removeModalParam({ key: 'deleteObject' }));
+    toast.success('Успешно удалено');
+  });
   return (
     <ModalLayout name="deleteObject" title="Удалить объект" size="lg">
       <CircleAlert className="mx-auto text-[var(--error-600)] mb-4" size={80} />
@@ -21,9 +33,11 @@ const DeleteObjectModal: FC = () => {
           Отмена
         </Button>
         <Button
+          isLoading={deleteObject.isLoading}
+          disabled={deleteObject.isLoading}
           variant="danger"
           onClick={() => {
-            dispatch(closeModal({ key: 'deleteObject' }));
+            deleteObject.mutate(id);
           }}
           className="basis-1/2">
           Да

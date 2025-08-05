@@ -8,10 +8,10 @@ import { NextPage } from 'next';
 import { useEffect } from 'react';
 
 const ToolsScreen: NextPage = () => {
-  const tools = useToolGetAll();
+  const tools = useToolGetAll({});
 
   useEffect(() => {
-    tools.mutate({});
+    tools.refetch();
   }, []);
 
   if (tools.isLoading) {
