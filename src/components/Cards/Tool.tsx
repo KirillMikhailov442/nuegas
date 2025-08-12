@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { EllipsisVertical, Pencil, Trash } from 'lucide-react';
 import { Dropdown, type MenuProps } from 'antd';
-import useAppDispatch from '@/hooks/useAppDispatch';
+import useAppDispatch from '@hooks/useAppDispatch';
 import { openModal, setModalParam } from '@/store/slices/modals';
 import { ITool } from '@/types/Tool';
 

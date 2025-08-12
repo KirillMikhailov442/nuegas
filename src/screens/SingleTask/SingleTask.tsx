@@ -9,7 +9,7 @@ import Image from 'next/image';
 const SingleTaskScreen: NextPage = () => {
   return (
     <div className="flex justify-center items-center gap-6 m-6 max-lg:block max-sm:m-3">
-      <div className="basis-[820px] bg-[var(--primary-0)] rounded-2">
+      <div className="basis-[820px] c-border bg-[var(--primary-0)] overflow-hidden rounded-md">
         <Image
           className="min-h-[250px] w-full object-cover object-center"
           src={task_img}
@@ -63,7 +63,7 @@ const SingleTaskScreen: NextPage = () => {
           </div>
         </div>
       </div>
-      <aside className="basis-[320px] bg-[var(--primary-0)] p-6 rounded-2">
+      <aside className="basis-[320px] c-border bg-[var(--primary-0)] p-6 rounded-md">
         <div className="mb-6">
           <h4 className="mb-4">Персонал</h4>
           <ul>

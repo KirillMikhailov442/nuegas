@@ -1,10 +1,11 @@
-import ProjectService from '@/services/Projects';
+import ProjectService from '@services/Projects';
 import { useQuery, useMutation } from 'react-query';
 import {
   IProject,
   IProjectCreate,
   IProjectResponse,
   IProjectsGet,
+  IProjectUpdate,
 } from '@/types/Project';
 import { AxiosError } from 'axios';
 
@@ -33,10 +34,15 @@ export const useProjectCreate = (
   });
 };
 
-export const useProjectUpdate = () => {
+export const useProjectUpdate = (
+  onSuccess?: () => void,
+  onError?: (error: AxiosError<{ message: string }>) => void,
+) => {
   return useMutation({
     mutationKey: ['updateProject'],
-    mutationFn: (data: IProject) => ProjectService.update(data.id, data),
+    mutationFn: (data: IProjectUpdate) => ProjectService.update(data),
+    onSuccess,
+    onError,
   });
 };
 
@@ -60,7 +66,7 @@ export const useProjectGetOne = (
   return useQuery({
     queryKey: ['project', id],
     queryFn: () => ProjectService.getOne(id),
-    enabled: false,
+    enabled: !!id,
     select: data => data.data,
     onSuccess,
     onError,

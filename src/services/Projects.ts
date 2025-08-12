@@ -17,11 +17,19 @@ class ProjectsService {
   }
 
   public create(data: IProjectCreate) {
-    return axiosBase.post<IProject>(this.baseUrl, data);
+    return axiosBase.post<IProject>(`${this.baseUrl}/createProject`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   }
 
-  public update(id: string, data: IProjectUpdate) {
-    return axiosBase.put<IProject>(`${this.baseUrl}/${id}`, data);
+  public update(data: IProjectUpdate) {
+    return axiosBase.put<IProject>(`${this.baseUrl}/updateProject`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   }
 
   public delete(id: string) {

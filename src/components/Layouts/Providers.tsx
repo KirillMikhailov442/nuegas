@@ -1,6 +1,6 @@
 'use client';
 
-import chakraTheme from '@/configs/chakraTheme';
+import chakraTheme from '@configs/chakraTheme';
 import { ChakraProvider } from '@chakra-ui/react';
 import type { FC, ReactNode } from 'react';
 import { Provider } from 'react-redux';
@@ -16,7 +16,7 @@ const Providers: FC<{ children: ReactNode }> = ({ children }) => {
       <ConfigProvider
         theme={{
           token: {
-            fontFamily: 'Open Sans, sans-serif',
+            fontFamily: 'Golos Text, sans-serif',
           },
         }}>
         <Provider store={store}>

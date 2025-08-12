@@ -11,7 +11,7 @@ export interface IProject {
 
 export type IProjectCreate = Omit<IProject, 'id'>;
 
-export type IProjectUpdate = IProjectCreate;
+export type IProjectUpdate = Omit<IProject, 'company'>;
 
 export interface IProjectsGet {
   pagination?: IPagination;

@@ -1,3 +1,4 @@
+import { IEmployee } from './Employee';
 import { IPagination } from './Request';
 
 export interface ITask {
@@ -5,6 +6,8 @@ export interface ITask {
   title: string;
   description: string;
   img: string;
+  deadline: string;
+  employees: IEmployee[];
 }
 
 export type ITaskCreate = Omit<ITask, 'id'>;

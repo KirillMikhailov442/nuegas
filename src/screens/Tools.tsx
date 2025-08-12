@@ -1,7 +1,7 @@
 'use client';
 
-import ToolCard from '@/components/Cards/Tool';
-import { useToolGetAll } from '@/hooks/useTool';
+import ToolCard from '@components/Cards/Tool';
+import { useToolGetAll } from '@hooks/useTool';
 import { ITool } from '@/types/Tool';
 import { Skeleton } from '@chakra-ui/react';
 import { NextPage } from 'next';

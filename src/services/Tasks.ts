@@ -6,6 +6,8 @@ class TasksService {
   public getAll(id: string) {
     return axiosBase.get(`${this.baseUrl}/getTasks/${id}`);
   }
+
+  public getOne(id: string) {}
 }
 
 export default new TasksService();

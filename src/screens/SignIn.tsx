@@ -1,3 +1,5 @@
+'use client';
+
 import Input from '@UI/Input';
 import Button from '@UI/Button';
 import { NextPage } from 'next';

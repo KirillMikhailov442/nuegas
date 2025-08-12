@@ -1,7 +1,7 @@
 'use client';
 
-import EmoloyeeCard from '@/components/Cards/Employee';
-import { useEmployeesGetAll } from '@/hooks/useEmploee';
+import EmoloyeeCard from '@components/Cards/Employee';
+import { useEmployeesGetAll } from '@hooks/useEmploee';
 import { NextPage } from 'next';
 
 const EmployeesScreen: NextPage = () => {

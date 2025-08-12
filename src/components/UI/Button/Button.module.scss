@@ -30,12 +30,12 @@
 }
 
 .medium {
-  padding: 0.5rem 1rem;
+  padding: 10px 12px;
 }
 
 .danger {
   border-radius: 10px;
-  background-color: var(--error-600);
+  background-color: var(--error-500);
   color: white;
   font-weight: 600;
   display: flex;

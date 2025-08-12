@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
-import Button from '@/components/UI/Button';
+import Button from '@components/UI/Button';
 import { SearchX } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 

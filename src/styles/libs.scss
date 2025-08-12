@@ -1,12 +1,16 @@
 .ant-tooltip-inner {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Golos Text', sans-serif !important;
 }
 
 .ant-dropdown-menu-item {
-  color: var(--secondary-300);
+  font-family: 'Golos Text', sans-serif !important;
   font-size: 1.2rem !important;
 }
 
 .ant-typography {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Golos Text', sans-serif !important;
+}
+
+.custom-toast-position {
+  bottom: 100px !important;
 }

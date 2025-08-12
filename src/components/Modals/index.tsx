@@ -11,6 +11,7 @@ import EditEmployeeModal from './EditEmployee';
 import EditObjectModal from './EditObject';
 import EditTaskModal from './EditTask';
 import EditToolModal from './EditTool';
+import NoInternetModal from './NoInternet';
 
 export {
   CreateEmployeeModal,
@@ -25,6 +26,7 @@ export {
   EditObjectModal,
   EditTaskModal,
   EditToolModal,
+  NoInternetModal,
 };
 
 const Modals: FC = () => {
@@ -42,6 +44,7 @@ const Modals: FC = () => {
       <CreateToolModal />
       <EditToolModal />
       <DeleteToolModal />
+      <NoInternetModal />
     </>
   );
 };

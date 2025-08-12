@@ -1,4 +1,4 @@
-import { SITE_DESCRIPTION, SITE_NAME } from '@/configs/SEO';
+import { SITE_DESCRIPTION, SITE_NAME } from '@configs/SEO';
 import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {

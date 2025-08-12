@@ -9,7 +9,7 @@ const EmoloyeeCard: FC<IEmployee> = ({ name, surname, img }) => {
   return (
     <li className="c-border p-4 rounded-lg relative bg-[var(--primary-0)] border border-solid border-[var(--primary-200)]">
       <div className="flex items-center gap-2">
-        <Avatar name="Fake" src={img} />
+        <Avatar name={name} src={img} />
         <h6 className="font-semibold">
           {name} {surname}
         </h6>

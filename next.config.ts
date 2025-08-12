@@ -1,22 +1,23 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
   experimental: {
     webpackMemoryOptimizations: true,
     preloadEntriesOnStart: false,
     turbo: {
       // treeShaking: true,
-      memoryLimit: 512 * 1024 * 1024
-    }
+      memoryLimit: 512 * 1024 * 1024,
+    },
   },
-  webpack: (config, {dev}) =>{
-    if(config.cache && !dev){
+  webpack: (config, { dev }) => {
+    if (config.cache && !dev) {
       config.cache = Object.freeze({
-        type: 'memory'
-      })
+        type: 'memory',
+      });
     }
 
-    return config
+    return config;
   },
 };
 

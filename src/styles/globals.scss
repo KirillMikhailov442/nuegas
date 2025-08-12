@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-@import './libs.scss';
-@import './vars.css';
-
 .wrapper {
   display: flex;
   min-height: 100dvh;
@@ -25,7 +22,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Golos Text', sans-serif;
   background-color: #fafafa !important;
 }
 

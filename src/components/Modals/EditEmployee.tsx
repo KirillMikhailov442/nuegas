@@ -1,12 +1,12 @@
 'use client';
 
-import ModalLayout from '@/components/Layouts/Modal';
-import Button from '@/components/UI/Button';
-import Input from '@/components/UI/Input';
+import ModalLayout from '@components/Layouts/Modal';
+import Button from '@components/UI/Button';
+import Input from '@components/UI/Input';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'sonner';
-import useAppDispatch from '@/hooks/useAppDispatch';
+import useAppDispatch from '@hooks/useAppDispatch';
 import { closeModal } from '@/store/slices/modals';
 
 const EditEmployeeModal = () => {
@@ -22,13 +22,17 @@ const EditEmployeeModal = () => {
       firstName: Yup.string().trim().required('Введите имя'),
       lastName: Yup.string().trim().required('Введите фамилию'),
     }),
-    onSubmit: () => {
+    onSubmit: (_, { resetForm }) => {
+      resetForm();
       toast.success('Успешно изменено');
       dispatch(closeModal({ key: 'editEmployee' }));
     },
   });
   return (
-    <ModalLayout name="editEmployee" title="Изменить рабочего">
+    <ModalLayout
+      name="editEmployee"
+      title="Изменить рабочего"
+      handleClose={() => formik.resetForm()}>
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
         <Input
           onChange={formik.handleChange}

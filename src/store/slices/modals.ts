@@ -13,6 +13,7 @@ const initialState = {
     createTool: false,
     editTool: false,
     deleteTool: false,
+    noInternet: false,
   },
   params: {
     createObject: '',

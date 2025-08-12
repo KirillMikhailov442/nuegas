@@ -1,5 +1,5 @@
-import { IToolAdd, IToolsGet, IToolUpdate } from '@/types/Tool';
-import ToolService from '@/services/Tools';
+import { ITool, IToolAdd, IToolsGet, IToolUpdate } from '@/types/Tool';
+import ToolService from '@services/Tools';
 import { AxiosError } from 'axios';
 import { useMutation, useQuery } from 'react-query';
 
@@ -7,6 +7,21 @@ export const useToolGetAll = (data: IToolsGet) => {
   return useQuery({
     queryKey: ['tools'],
     queryFn: () => ToolService.getAll(data),
+  });
+};
+
+export const useToolGetOne = (
+  id: string,
+  onSuccess?: (data: ITool) => void,
+  onError?: (error: AxiosError<{ message: string }>) => void,
+) => {
+  return useQuery({
+    queryKey: ['tool', id],
+    queryFn: () => ToolService.getOne(id),
+    enabled: !!id,
+    select: data => data.data,
+    onSuccess,
+    onError,
   });
 };
 

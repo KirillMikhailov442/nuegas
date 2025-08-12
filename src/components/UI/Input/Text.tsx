@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useId, useState, type FC } from 'react';
 import styles from './Input.module.scss';
@@ -22,9 +22,7 @@ const InputText: FC<InputProps> = ({
   const [inputValue, setInputValue] = useState(value);
   return (
     <div className={clsx(styles.wrapper, className)}>
-      <label
-        htmlFor={id}
-        className={styles.label}>
+      <label htmlFor={id} className={styles.label}>
         {label}
       </label>
       <div className={styles.content}>

@@ -5,7 +5,7 @@ import styles from './Object.module.scss';
 import { Avatar, AvatarGroup, Progress } from '@chakra-ui/react';
 import { Pencil, Trash } from 'lucide-react';
 import { Dropdown, Typography, type MenuProps } from 'antd';
-import useAppDispatch from '@/hooks/useAppDispatch';
+import useAppDispatch from '@hooks/useAppDispatch';
 import { openModal, setModalParam } from '@/store/slices/modals';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -52,27 +52,10 @@ const ObjectCard: FC<IProject> = ({ id, title, img, customer }) => {
               ellipsis={{ rows: 2 }}>
               {title}
             </Typography.Paragraph>
-            <div className={styles.progressbar}>
-              <div>
-                <h6>Прогресс</h6>
-                <p className={styles.number}>100%</p>
-              </div>
-              <Progress
-                className={styles.progress}
-                color="primary-500"
-                value={90}
-              />
-            </div>
             <footer className={styles.down}>
               <Typography.Paragraph ellipsis className={styles.customer}>
                 {customer}
               </Typography.Paragraph>
-              <AvatarGroup max={3} size={'xs'}>
-                <Avatar name="a" />
-                <Avatar name="bss" />
-                <Avatar name="caa" />
-                <Avatar name="dcc" />
-              </AvatarGroup>
             </footer>
           </footer>
         </Link>

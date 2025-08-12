@@ -28,6 +28,7 @@
       "@styles/*":["./src/styles/*"],
       "@screens/*":["./src/screens/*"],
       "@services/*":["./src/services/*"],
+      "@configs/*": ["./src/configs/*"],
       "@hooks/*":["./src/hooks/*"],
       "@assets/*":["./src/assets/*"],
       "@fonts/*":["./src/assets/fonts/*"],

@@ -16,6 +16,10 @@ class ToolsService {
     });
   }
 
+  public getOne(id: string) {
+    return axiosBase.get<ITool>(`${this.baseUrl}/getTool/${id}`);
+  }
+
   public create(data: IToolAdd) {
     return axiosBase.post<ITool>(`${this.baseUrl}/addTool`, data);
   }

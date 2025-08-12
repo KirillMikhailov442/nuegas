@@ -1,12 +1,12 @@
 'use client';
 
-import ModalLayout from '@/components/Layouts/Modal';
-import Button from '@/components/UI/Button';
-import Input from '@/components/UI/Input';
+import ModalLayout from '@components/Layouts/Modal';
+import Button from '@components/UI/Button';
+import Input from '@components/UI/Input';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'sonner';
-import useAppDispatch from '@/hooks/useAppDispatch';
+import useAppDispatch from '@hooks/useAppDispatch';
 import { closeModal } from '@/store/slices/modals';
 
 const CreateEmployeeModal = () => {
@@ -22,13 +22,17 @@ const CreateEmployeeModal = () => {
       firstName: Yup.string().trim().required('Введите имя'),
       lastName: Yup.string().trim().required('Введите фамилию'),
     }),
-    onSubmit: () => {
+    onSubmit: (_, { resetForm }) => {
       toast.success('Успешно создано');
+      resetForm();
       dispatch(closeModal({ key: 'createEmployee' }));
     },
   });
   return (
-    <ModalLayout name="createEmployee" title="Создать нового рабочего">
+    <ModalLayout
+      name="createEmployee"
+      title="Создать нового рабочего"
+      handleClose={() => formik.resetForm()}>
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
         <Input
           onChange={formik.handleChange}

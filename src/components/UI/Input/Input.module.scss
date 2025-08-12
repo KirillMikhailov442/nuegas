@@ -23,6 +23,7 @@
   border: 1.5px solid var(--primary-200);
   transition: border-color 0.2s ease;
   background-color: transparent;
+  color: var(--secondary-500);
   outline: none;
   border-radius: 8px;
   &WithIcon {
@@ -59,6 +60,6 @@
   }
 }
 .error {
-  color: red;
+  color: var(--error-500);
   font-size: 12px;
 }

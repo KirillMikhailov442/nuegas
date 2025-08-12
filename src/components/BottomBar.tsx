@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { DoorOpen, Folders, Hammer, Plus, Users } from 'lucide-react';
 import clsx from 'clsx';
-import useAppDispatch from '@/hooks/useAppDispatch';
+import useAppDispatch from '@hooks/useAppDispatch';
 import { openModal } from '@/store/slices/modals';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -31,7 +31,7 @@ const BottomBar: FC = () => {
         href={'/employees'}>
         <Users size={30} />
       </Link>
-      {(!id || !pathName.startsWith('/tasks')) && (
+      {!['/tasks', '/employees'].includes(pathName) && (
         <button
           onClick={() => {
             if (pathName == '/') {

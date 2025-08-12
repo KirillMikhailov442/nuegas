@@ -1,2 +1,2 @@
-import ObjectsScreen from '@/screens/Objects';
+import ObjectsScreen from '@screens/Objects';
 export default ObjectsScreen;

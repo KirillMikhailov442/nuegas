@@ -1,2 +1,2 @@
-import LoadingScreen from '@/screens/Loading';
+import LoadingScreen from '@screens/Loading';
 export default LoadingScreen;

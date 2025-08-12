@@ -1,7 +1,7 @@
 'use client';
 
-import ObjectCard from '@/components/Cards/Object/Object';
-import { useProjectGetAll } from '@/hooks/useProject';
+import ObjectCard from '@components/Cards/Object/Object';
+import { useProjectGetAll } from '@hooks/useProject';
 import { Skeleton } from '@chakra-ui/react';
 import { NextPage } from 'next';
 
