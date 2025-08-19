@@ -64,7 +64,7 @@ const TaskCard: FC<ITask> = ({ title, id, deadline, employees }) => {
             </div>
             <footer className={styles.down}>
               <p className={styles.date}>
-                Дедлайн: {dayjs(deadline).locale('ru').format('DD MMM YYYY')}
+                Сроки: {dayjs(deadline).locale('ru').format('DD MMM YYYY')}
               </p>
               <AvatarGroup max={3} size={'xs'}>
                 {employees.map(employee => (

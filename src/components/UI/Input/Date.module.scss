@@ -1,0 +1,46 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+.label {
+  font-size: 14px;
+  color: var(--secondary-300);
+}
+.input {
+  width: 100%;
+  height: 45px;
+  padding-inline: 1rem;
+  border: 1.5px solid var(--primary-200);
+  color: var(--secondary-500);
+  transition: border-color 0.2s ease;
+  outline: none;
+  border-radius: 8px;
+  &Error {
+    border-color: var(--error-500);
+    & ~ .icon {
+      color: var(--error-500);
+    }
+  }
+
+  &Error {
+    border-color: var(--error-500) !important;
+    & ~ .icon {
+      color: var(--error-500);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--secondary-500);
+    color: var(--secondary-500);
+    & ~ .icon,
+    ~ .eye {
+      color: var(--secondary-500);
+    }
+  }
+}
+
+.error {
+  color: var(--error-500);
+  font-size: 12px;
+}

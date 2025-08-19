@@ -2,9 +2,10 @@ import type { FC, HTMLAttributes, ReactNode, Ref } from 'react';
 import InputText from './Text';
 import InputEmail from './Email';
 import InputPassword from './Password';
+import InputDate from './Date';
 
 export interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  type?: 'text' | 'password' | 'email';
+  type?: 'text' | 'password' | 'email' | 'date';
   label?: string;
   error?: string;
   ref?: Ref<HTMLInputElement>;
@@ -22,6 +23,8 @@ const Input: FC<InputProps> = ({ type, ...props }) => {
       return <InputEmail {...props} />;
     case 'password':
       return <InputPassword {...props} />;
+    case 'date':
+      return <InputDate {...props} />;
     default:
       return <InputText {...props} />;
   }

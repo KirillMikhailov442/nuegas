@@ -10,7 +10,6 @@ import useAppDispatch from '@hooks/useAppDispatch';
 import { closeModal } from '@/store/slices/modals';
 import Textarea from '@UI/Textarea/Textarea';
 import DropZone from '../DropZone/Images';
-import { convertFileToBase64 } from '@/helpers/convert';
 import { useProjectCreate } from '@/hooks/useProject';
 import { useQueryClient } from 'react-query';
 import { useMediaQuery } from '@chakra-ui/react';
@@ -38,7 +37,7 @@ const CreateObjectModal = () => {
     enableReinitialize: true,
     validateOnBlur: false,
     validationSchema: Yup.object({
-      img: Yup.string().required('Выберите изображение'),
+      img: Yup.mixed().required('Выберите изображение'),
       title: Yup.string().trim().required('Введите название'),
       description: Yup.string().trim().required('Введите описание'),
       customer: Yup.string().trim().required('Введите заказчика'),
@@ -61,9 +60,7 @@ const CreateObjectModal = () => {
         <div className="p-8 flex flex-col gap-4 h-[80dvh]">
           <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
             <DropZone
-              onChange={async file =>
-                formik.setFieldValue('img', await convertFileToBase64(file))
-              }
+              onChange={file => formik.setFieldValue('img', file)}
               onClose={() => formik.setFieldValue('img', '')}
               value={formik.values.img}
               error={formik.errors.img}
@@ -117,12 +114,11 @@ const CreateObjectModal = () => {
     <ModalLayout
       name="createObject"
       title="Создать новый объект"
+      size="xl"
       handleClose={() => formik.resetForm()}>
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
         <DropZone
-          onChange={async file =>
-            formik.setFieldValue('img', await convertFileToBase64(file))
-          }
+          onChange={file => formik.setFieldValue('img', file)}
           onClose={() => formik.setFieldValue('img', '')}
           value={formik.values.img}
           error={formik.errors.img}

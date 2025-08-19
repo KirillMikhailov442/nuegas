@@ -14,3 +14,24 @@
 .custom-toast-position {
   bottom: 100px !important;
 }
+
+.ant-picker-dropdown {
+  z-index: 2000 !important;
+}
+
+.ant-picker:hover,
+.ant-picker:active {
+  border-color: var(--primary-200);
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ant-picker-focused,
+.ant-picker:focus {
+  border-color: var(--secondary-500) !important;
+}
+
+.ant-picker-input > input::placeholder {
+  color: var(--secondary-300) !important;
+  font-size: 1rem;
+}

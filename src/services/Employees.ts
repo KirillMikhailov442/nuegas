@@ -1,16 +1,28 @@
-import { IEmployeesGet, IEmployeesGetAllResponse } from '@/types/Employee';
+import {
+  IEmployeesGet,
+  IEmployeesGetAllResponse,
+  IEmployeeToTask,
+} from '@/types/Employee';
 import { axiosBase } from './axiosInstance';
 
 class EmploeesService {
   private readonly baseUrl = '/company';
 
-  public getAll(data: IEmployeesGet) {
+  public getAll(body: IEmployeesGet) {
     return axiosBase.get<IEmployeesGetAllResponse>(
       `${this.baseUrl}/getEmployees`,
       {
-        params: data.pagination,
+        params: body.pagination,
       },
     );
+  }
+
+  public addToTask(body: IEmployeeToTask) {
+    return axiosBase.post(`/projects/addEmployeeToTask`, body);
+  }
+
+  public removeFromTask(body: IEmployeeToTask) {
+    return axiosBase.post(`/projects/deleteEmployeeFromTask`, body);
   }
 }
 

@@ -8,3 +8,10 @@ export const convertFileToBase64 = (file: File): Promise<string> => {
     reader.readAsDataURL(file);
   });
 };
+
+export const convertCoordsInString = (coords: []) => coords.join(',');
+
+export const convertStringInCoords = (coords: string) => {
+  if (!coords) return [0, 0];
+  return coords.split(',').map(item => Number(item));
+};

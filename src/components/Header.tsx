@@ -51,7 +51,7 @@ const Header: FC = () => {
     <header className="flex items-center justify-between bg-[var(--primary-0)] px-3 h-[70px] max-md:fixed max-md:w-full top-0 z-100">
       <Typography.Paragraph
         ellipsis
-        className="hidden md:block !text-lg !mb-0 w-[30%]">
+        className="hidden md:block !text-lg !mb-0 w-[500px]">
         {title}
       </Typography.Paragraph>
       <Link href={'/'} className="flex items-center gap-1 md:hidden">
@@ -59,23 +59,24 @@ const Header: FC = () => {
         <h4>Nuegas</h4>
       </Link>
       <div className="flex items-center gap-2 justify-between">
-        {!['/tasks', '/employees'].includes(pathName) && (
-          <Button
-            className="max-md:!hidden"
-            onClick={() => {
-              if (pathName == '/') {
-                dispatch(openModal({ key: 'createObject' }));
-              } else if (pathName.includes('/objects')) {
-                dispatch(openModal({ key: 'createTask' }));
-              } else if (pathName == '/employees') {
-                dispatch(openModal({ key: 'createEmployee' }));
-              } else if (pathName == '/tools') {
-                dispatch(openModal({ key: 'createTool' }));
-              }
-            }}>
-            <Plus size={20} /> Создать
-          </Button>
-        )}
+        {!['/tasks', '/employees'].includes(pathName) &&
+          !pathName.startsWith('/tasks') && (
+            <Button
+              className="max-md:!hidden"
+              onClick={() => {
+                if (pathName == '/') {
+                  dispatch(openModal({ key: 'createObject' }));
+                } else if (pathName.includes('/objects')) {
+                  dispatch(openModal({ key: 'createTask' }));
+                } else if (pathName == '/employees') {
+                  dispatch(openModal({ key: 'createEmployee' }));
+                } else if (pathName == '/tools') {
+                  dispatch(openModal({ key: 'createTool' }));
+                }
+              }}>
+              <Plus size={20} /> Создать
+            </Button>
+          )}
         <Dropdown menu={{ items }} trigger={['click']}>
           <Avatar
             className={'w-[50px] h-[50px]'}

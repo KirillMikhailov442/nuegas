@@ -10,22 +10,22 @@ import { axiosBase } from './axiosInstance';
 class ProjectsService {
   private readonly baseUrl = '/projects';
 
-  public getAll(data: IProjectsGet) {
+  public getAll(body: IProjectsGet) {
     return axiosBase.get<IProjectResponse>(`${this.baseUrl}/getProjects`, {
-      params: data.pagination,
+      params: body.pagination,
     });
   }
 
-  public create(data: IProjectCreate) {
-    return axiosBase.post<IProject>(`${this.baseUrl}/createProject`, data, {
+  public create(body: IProjectCreate) {
+    return axiosBase.post<IProject>(`${this.baseUrl}/createProject`, body, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
   }
 
-  public update(data: IProjectUpdate) {
-    return axiosBase.put<IProject>(`${this.baseUrl}/updateProject`, data, {
+  public update(body: IProjectUpdate) {
+    return axiosBase.put<IProject>(`${this.baseUrl}/updateProject`, body, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

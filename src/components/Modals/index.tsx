@@ -12,6 +12,9 @@ import EditObjectModal from './EditObject';
 import EditTaskModal from './EditTask';
 import EditToolModal from './EditTool';
 import NoInternetModal from './NoInternet';
+import AddEmployeeModal from './AddEmployee/AddEmployee';
+import AddToolModal from './AddTool/AddTool';
+import CreateMicrotaskModal from './CreateMicrotask';
 
 export {
   CreateEmployeeModal,
@@ -27,6 +30,9 @@ export {
   EditTaskModal,
   EditToolModal,
   NoInternetModal,
+  AddEmployeeModal,
+  AddToolModal,
+  CreateMicrotaskModal,
 };
 
 const Modals: FC = () => {
@@ -45,6 +51,9 @@ const Modals: FC = () => {
       <EditToolModal />
       <DeleteToolModal />
       <NoInternetModal />
+      <AddEmployeeModal />
+      <AddToolModal />
+      <CreateMicrotaskModal />
     </>
   );
 };

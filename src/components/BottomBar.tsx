@@ -31,23 +31,24 @@ const BottomBar: FC = () => {
         href={'/employees'}>
         <Users size={30} />
       </Link>
-      {!['/tasks', '/employees'].includes(pathName) && (
-        <button
-          onClick={() => {
-            if (pathName == '/') {
-              dispatch(openModal({ key: 'createObject' }));
-            } else if (pathName.includes('/objects')) {
-              dispatch(openModal({ key: 'createTask' }));
-            } else if (pathName == '/employees') {
-              dispatch(openModal({ key: 'createEmployee' }));
-            } else if (pathName == '/tools') {
-              dispatch(openModal({ key: 'createTool' }));
-            }
-          }}
-          className="rounded-full relative w-[70px] h-[70px] bottom-[50%] !bg-[var(--primary-500)] !text-[var(--primary-0)] flex items-center justify-center">
-          <Plus size={30} />
-        </button>
-      )}
+      {!['/tasks', '/employees'].includes(pathName) &&
+        !pathName.startsWith('/tasks') && (
+          <button
+            onClick={() => {
+              if (pathName == '/') {
+                dispatch(openModal({ key: 'createObject' }));
+              } else if (pathName.includes('/objects')) {
+                dispatch(openModal({ key: 'createTask' }));
+              } else if (pathName == '/employees') {
+                dispatch(openModal({ key: 'createEmployee' }));
+              } else if (pathName == '/tools') {
+                dispatch(openModal({ key: 'createTool' }));
+              }
+            }}
+            className="rounded-full relative w-[70px] h-[70px] bottom-[50%] !bg-[var(--primary-500)] !text-[var(--primary-0)] flex items-center justify-center">
+            <Plus size={30} />
+          </button>
+        )}
       <Link
         className={clsx(
           'flex items-center gap-1 flex-col !text-[var(--secondary-300)]',

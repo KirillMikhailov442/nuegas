@@ -17,3 +17,8 @@ export interface IToolResponse {
   pageItems: ITool[];
   count: number;
 }
+
+export interface IToolToTask {
+  taskId: string;
+  toolId: string;
+}

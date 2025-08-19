@@ -1,5 +1,6 @@
 'use client';
 
+import { Skeleton } from '@chakra-ui/react';
 import TaskCard from '@components/Cards/Task/Task';
 import { useTasksGetAll } from '@hooks/useTasks';
 import { NextPage } from 'next';
@@ -17,6 +18,21 @@ const SingleObjectScreen: NextPage = () => {
       back();
     },
   );
+
+  if (tasks.isLoading) {
+    return (
+      <div className="grid grid-cols-4 gap-5 px-8 py-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:p-4">
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+        <Skeleton height={350} />
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-4 gap-5 px-8 py-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:p-4">

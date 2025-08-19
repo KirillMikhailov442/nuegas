@@ -1,5 +1,7 @@
 import { IEmployee } from './Employee';
+import { IMicrotask } from './Microtask';
 import { IPagination } from './Request';
+import { ITool } from './Tool';
 
 export interface ITask {
   id: string;
@@ -7,12 +9,27 @@ export interface ITask {
   description: string;
   img: string;
   deadline: string;
+  cords: string;
   employees: IEmployee[];
+  tools: ITool[];
+  microtasks: IMicrotask[];
 }
 
-export type ITaskCreate = Omit<ITask, 'id'>;
+export interface ITaskCreate {
+  projectdId: string;
+  title: string;
+  description: string;
+  cords: string;
+  deadline: string;
+}
 
-export type ITaskUpdate = ITaskCreate;
+export interface ITaskUpdate {
+  id: string;
+  title: string;
+  description: string;
+  cords: string;
+  deadline: string;
+}
 
 export interface ITasksGet {
   pagination?: IPagination;

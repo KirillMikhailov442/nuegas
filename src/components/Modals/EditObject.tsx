@@ -12,7 +12,6 @@ import Textarea from '@UI/Textarea/Textarea';
 import DropZone from '@components/DropZone/Images';
 import { useProjectGetOne, useProjectUpdate } from '@hooks/useProject';
 import useAppSelector from '@hooks/useAppSelector';
-import { convertFileToBase64 } from '@helpers/convert';
 import { useQueryClient } from 'react-query';
 import { useMediaQuery } from '@chakra-ui/react';
 import { BottomSheet } from 'react-spring-bottom-sheet';
@@ -27,7 +26,7 @@ const EditObjectModal = () => {
     formik.resetForm();
     query.invalidateQueries(['projects']);
     toast.success('Успешно создано');
-    dispatch(closeModal({ key: 'createObject' }));
+    dispatch(closeModal({ key: 'editObject' }));
   });
 
   const formik = useFormik({
@@ -40,18 +39,20 @@ const EditObjectModal = () => {
     enableReinitialize: true,
     validateOnBlur: false,
     validationSchema: Yup.object({
-      img: Yup.string().required('Выберите изображение'),
+      img: Yup.mixed().required('Выберите изображение'),
       title: Yup.string().trim().required('Введите название'),
       description: Yup.string().trim().required('Введите описание'),
       customer: Yup.string().trim().required('Введите заказчика'),
     }),
     onSubmit: values => {
+      console.log(values);
+
       updateProject.mutate({
         id: id,
         title: String(values.title),
         description: String(values.description),
         customer: String(values.customer),
-        img: String(values.img),
+        img: values.img,
       });
     },
   });
@@ -70,9 +71,7 @@ const EditObjectModal = () => {
         <div className="p-8 flex flex-col gap-4 h-[80dvh]">
           <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
             <DropZone
-              onChange={async file =>
-                formik.setFieldValue('img', await convertFileToBase64(file))
-              }
+              onChange={file => formik.setFieldValue('img', file)}
               value={formik.values.img}
             />
             <Input
@@ -119,15 +118,14 @@ const EditObjectModal = () => {
     <ModalLayout
       name="editObject"
       title="Изменить объект"
+      size="xl"
       handleClose={() => {
         formik.resetForm();
         dispatch(removeModalParam({ key: 'editObject' }));
       }}>
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
         <DropZone
-          onChange={async file =>
-            formik.setFieldValue('img', await convertFileToBase64(file))
-          }
+          onChange={file => formik.setFieldValue('img', file)}
           value={formik.values.img}
         />
         <Input

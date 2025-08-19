@@ -9,9 +9,9 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
-  const object = await ObjectsService.getOne(id).then(res => res.data);
-  console.log(id, object);
-
+  const object = await ObjectsService.getOne(id)
+    .then(res => res.data)
+    .catch(err => false);
   if (!object) return notFound();
 
   return {

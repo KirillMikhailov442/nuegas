@@ -14,6 +14,9 @@ const initialState = {
     editTool: false,
     deleteTool: false,
     noInternet: false,
+    addEmployee: false,
+    addTool: false,
+    createMicrotask: false,
   },
   params: {
     createObject: '',

@@ -1,12 +1,26 @@
-import { ITool, IToolAdd, IToolsGet, IToolUpdate } from '@/types/Tool';
+import {
+  ITool,
+  IToolAdd,
+  IToolsGet,
+  IToolToTask,
+  IToolUpdate,
+} from '@/types/Tool';
 import ToolService from '@services/Tools';
 import { AxiosError } from 'axios';
 import { useMutation, useQuery } from 'react-query';
 
-export const useToolGetAll = (data: IToolsGet) => {
+export const useToolGetAll = (data: IToolsGet, isFree?: boolean) => {
   return useQuery({
     queryKey: ['tools'],
+    queryFn: () => ToolService.getAll(data, isFree),
+  });
+};
+
+export const useToolGetAllWithEnabled = (data: IToolsGet) => {
+  return useQuery({
+    queryKey: ['tools-enabled'],
     queryFn: () => ToolService.getAll(data),
+    enabled: false,
   });
 };
 
@@ -56,6 +70,30 @@ export const useToolDelete = (
   return useMutation({
     mutationKey: ['tool-delete'],
     mutationFn: (id: string) => ToolService.delete(id),
+    onSuccess,
+    onError,
+  });
+};
+
+export const useToolAddToTask = (
+  onSuccess?: () => void,
+  onError?: (error: AxiosError<{ message: string }>) => void,
+) => {
+  return useMutation({
+    mutationKey: ['add-to-task'],
+    mutationFn: (body: IToolToTask) => ToolService.addToTask(body),
+    onSuccess,
+    onError,
+  });
+};
+
+export const useToolRemoveFromTask = (
+  onSuccess?: () => void,
+  onError?: (error: AxiosError<{ message: string }>) => void,
+) => {
+  return useMutation({
+    mutationKey: ['remove-from-task'],
+    mutationFn: (body: IToolToTask) => ToolService.removeFromTask(body),
     onSuccess,
     onError,
   });

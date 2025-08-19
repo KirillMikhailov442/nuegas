@@ -1,0 +1,13 @@
+.list {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px 5px;
+  border-bottom: 1px solid var(--secondary-200);
+  cursor: pointer;
+}

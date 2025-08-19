@@ -3,6 +3,7 @@ import {
   IToolAdd,
   IToolResponse,
   IToolsGet,
+  IToolToTask,
   IToolUpdate,
 } from '@/types/Tool';
 import { axiosBase } from './axiosInstance';
@@ -10,9 +11,9 @@ import { axiosBase } from './axiosInstance';
 class ToolsService {
   private readonly baseUrl = '/company';
 
-  public getAll(data: IToolsGet) {
+  public getAll(body: IToolsGet, isFree: boolean = false) {
     return axiosBase.get<IToolResponse>(`${this.baseUrl}/getTools`, {
-      params: data,
+      params: { ...body, isFree },
     });
   }
 
@@ -20,15 +21,23 @@ class ToolsService {
     return axiosBase.get<ITool>(`${this.baseUrl}/getTool/${id}`);
   }
 
-  public create(data: IToolAdd) {
-    return axiosBase.post<ITool>(`${this.baseUrl}/addTool`, data);
+  public create(body: IToolAdd) {
+    return axiosBase.post<ITool>(`${this.baseUrl}/addTool`, body);
   }
-  public update(data: IToolUpdate) {
-    return axiosBase.put(`${this.baseUrl}/updateTool`, data);
+  public update(body: IToolUpdate) {
+    return axiosBase.put(`${this.baseUrl}/updateTool`, body);
   }
 
   public delete(id: string) {
     return axiosBase.delete(`${this.baseUrl}/deleteTool/${id}`);
+  }
+
+  public addToTask(body: IToolToTask) {
+    return axiosBase.post(`/projects/addToolToTask`, body);
+  }
+
+  public removeFromTask(body: IToolToTask) {
+    return axiosBase.post(`/projects/deleteToolFromTask`, body);
   }
 }
 

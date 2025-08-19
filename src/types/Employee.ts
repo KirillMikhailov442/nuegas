@@ -19,3 +19,8 @@ export interface IEmployeesGetAllResponse {
   pageItems: IEmployee[];
   count: number;
 }
+
+export interface IEmployeeToTask {
+  taskId: string;
+  employeeId: string;
+}

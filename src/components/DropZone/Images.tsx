@@ -29,6 +29,7 @@ const DropZoneImages: FC<DropZoneProps> = ({
 
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     setFile(acceptedFiles[0]);
+
     if (onChange) onChange(acceptedFiles[0]);
   }, []);
 
