@@ -11,9 +11,9 @@ import { axiosBase } from './axiosInstance';
 class ToolsService {
   private readonly baseUrl = '/company';
 
-  public getAll(body: IToolsGet, isFree: boolean = false) {
+  public getAll(body: IToolsGet) {
     return axiosBase.get<IToolResponse>(`${this.baseUrl}/getTools`, {
-      params: { ...body, isFree },
+      params: { ...body },
     });
   }
 

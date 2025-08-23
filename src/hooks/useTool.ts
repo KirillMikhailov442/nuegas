@@ -9,10 +9,10 @@ import ToolService from '@services/Tools';
 import { AxiosError } from 'axios';
 import { useMutation, useQuery } from 'react-query';
 
-export const useToolGetAll = (data: IToolsGet, isFree?: boolean) => {
+export const useToolGetAll = (data: IToolsGet) => {
   return useQuery({
     queryKey: ['tools'],
-    queryFn: () => ToolService.getAll(data, isFree),
+    queryFn: () => ToolService.getAll(data),
   });
 };
 

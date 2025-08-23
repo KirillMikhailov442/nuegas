@@ -18,6 +18,7 @@ const Microtask: FC<IMicrotask> = ({ title, isCompleted, description, id }) => {
     <li role="button" className="group flex items-center gap-5 mt-4">
       <label className="flex items-start gap-3">
         <Checkbox
+          size="lg"
           disabled={
             update.isLoading || deleteMicrotask.isLoading || isCompleted
           }
@@ -30,9 +31,14 @@ const Microtask: FC<IMicrotask> = ({ title, isCompleted, description, id }) => {
             });
           }}
           checked={isCompleted}
-          className="mt-[2px]"
         />
-        <h6 className={twMerge(isCompleted && 'line-through')}>{title}</h6>
+        <h5
+          className={twMerge(
+            'text-[var(--primary-600)]',
+            isCompleted && 'line-through',
+          )}>
+          {title}
+        </h5>
       </label>
       <button
         className="group-hover:opacity-100 opacity-0 max-md:opacity-100"

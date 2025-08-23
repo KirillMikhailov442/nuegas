@@ -18,7 +18,7 @@ import { toast } from 'sonner';
 const AddToolModal: FC = () => {
   const dispatch = useAppDispatch();
   const [selected, setSelected] = useState('');
-  const employees = useToolGetAll({}, true);
+  const employees = useToolGetAll({ isFree: true });
   const [isTablet] = useMediaQuery('(max-width: 768px)');
   const query = useQueryClient();
   const taskId = useParams<{ id: string }>().id;

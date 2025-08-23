@@ -11,6 +11,7 @@ export type IToolUpdate = ITool;
 
 export interface IToolsGet {
   pagination?: IPagination;
+  isFree: boolean;
 }
 
 export interface IToolResponse {

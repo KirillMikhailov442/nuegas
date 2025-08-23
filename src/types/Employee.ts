@@ -1,10 +1,12 @@
 import { IPagination } from './Request';
+import { ITask } from './Task';
 
 export interface IEmployee {
   id: string;
   name: string;
   surname: string;
   img: string;
+  tasks: ITask[];
 }
 
 export type IEmployeeCreate = Omit<IEmployee, 'id'>;

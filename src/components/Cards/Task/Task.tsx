@@ -12,7 +12,7 @@ import 'dayjs/locale/ru';
 import useAppDispatch from '@hooks/useAppDispatch';
 import { openModal, setModalParam } from '@store/slices/modals';
 
-const TaskCard: FC<ITask> = ({ title, id, deadline, employees }) => {
+const TaskCard: FC<ITask> = ({ title, id, deadline, employees, progress }) => {
   const dispatch = useAppDispatch();
   const items: MenuProps['items'] = [
     {
@@ -54,12 +54,13 @@ const TaskCard: FC<ITask> = ({ title, id, deadline, employees }) => {
             <div className={styles.progressbar}>
               <div>
                 <h6>Прогресс</h6>
-                <p className={styles.number}>100%</p>
+                <p className={styles.number}>{progress}%</p>
               </div>
               <Progress
                 className={styles.progress}
                 color="primary-500"
-                value={90}
+                value={progress}
+                max={100}
               />
             </div>
             <footer className={styles.down}>

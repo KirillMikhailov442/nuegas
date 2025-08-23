@@ -8,7 +8,7 @@ import { NextPage } from 'next';
 import { useEffect } from 'react';
 
 const ToolsScreen: NextPage = () => {
-  const tools = useToolGetAll({});
+  const tools = useToolGetAll({ isFree: false });
 
   useEffect(() => {
     tools.refetch();

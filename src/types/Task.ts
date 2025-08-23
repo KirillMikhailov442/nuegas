@@ -13,6 +13,7 @@ export interface ITask {
   employees: IEmployee[];
   tools: ITool[];
   microtasks: IMicrotask[];
+  progress: number;
 }
 
 export interface ITaskCreate {

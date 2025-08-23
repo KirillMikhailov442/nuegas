@@ -5,7 +5,7 @@ import { Avatar } from '@chakra-ui/react';
 import Link from 'next/link';
 import { IEmployee } from '@/types/Employee';
 
-const EmoloyeeCard: FC<IEmployee> = ({ name, surname, img }) => {
+const EmoloyeeCard: FC<IEmployee> = ({ name, surname, img, tasks }) => {
   return (
     <li className="c-border p-4 rounded-lg relative bg-[var(--primary-0)] border border-solid border-[var(--primary-200)]">
       <div className="flex items-center gap-2">
@@ -14,11 +14,15 @@ const EmoloyeeCard: FC<IEmployee> = ({ name, surname, img }) => {
           {name} {surname}
         </h6>
       </div>
-      <Link
-        href={'/'}
-        className="mt-2 !text-[var(--primary-500)] text-lg float-left">
-        12 Задача
-      </Link>
+      <p className="text-sm">Задачи:</p>
+      {tasks.map(task => (
+        <Link
+          className="mt-2 !text-[var(--primary-500)] text-sm float-left"
+          href={`/tasks/${task.id}`}
+          key={task.id}>
+          {task.title}
+        </Link>
+      ))}
     </li>
   );
 };
