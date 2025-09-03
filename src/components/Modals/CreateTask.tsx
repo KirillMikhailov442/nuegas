@@ -46,7 +46,7 @@ const CreateTaskModal = () => {
     }),
     onSubmit: values => {
       create.mutate({
-        projectdId: projectId,
+        projectId: projectId,
         title: values.title,
         description: values.description,
         deadline: new Date(values.deadline).toISOString(),

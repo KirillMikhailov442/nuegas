@@ -17,7 +17,7 @@ export interface ITask {
 }
 
 export interface ITaskCreate {
-  projectdId: string;
+  projectId: string;
   title: string;
   description: string;
   cords: string;
