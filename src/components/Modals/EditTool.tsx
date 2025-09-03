@@ -8,9 +8,10 @@ import * as Yup from 'yup';
 import useAppDispatch from '@hooks/useAppDispatch';
 import { closeModal, removeModalParam } from '@store/slices/modals';
 import useAppSelector from '@hooks/useAppSelector';
-import { useToolGetOne } from '@hooks/useTool';
+import { useToolGetOne, useToolUpdate } from '@hooks/useTool';
 import { useMediaQuery } from '@chakra-ui/react';
 import { BottomSheet } from 'react-spring-bottom-sheet';
+import { useQueryClient } from 'react-query';
 
 const EditToolModal = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,13 @@ const EditToolModal = () => {
   const isOpen = useAppSelector(state => state.modals.visibles.editTool);
   const tool = useToolGetOne(id);
   const [isTablet] = useMediaQuery('(max-width: 768px)');
+  const query = useQueryClient();
+  const update = useToolUpdate(() => {
+    query.invalidateQueries(['tools']);
+    formik.resetForm();
+    dispatch(removeModalParam({ key: 'editTool' }));
+    dispatch(closeModal({ key: 'editTool' }));
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -28,10 +36,8 @@ const EditToolModal = () => {
     validationSchema: Yup.object({
       name: Yup.string().trim().required('Введите название'),
     }),
-    onSubmit: (_, { resetForm }) => {
-      resetForm();
-      dispatch(removeModalParam({ key: 'editTool' }));
-      dispatch(closeModal({ key: 'editTool' }));
+    onSubmit: values => {
+      update.mutate({ name: String(values.name), id });
     },
   });
 
