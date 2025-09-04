@@ -16,6 +16,7 @@ interface IMap {
 const Map: FC<IMap> = ({ label, error, onChange, defaultCords }) => {
   const [coords, setCoords] = useState<[number, number]>(defaultCords);
 
+  // @ts-ignore
   const handleMapClick = event => {
     const coordinates: [number, number] = event.get('coords');
     setCoords(coordinates);

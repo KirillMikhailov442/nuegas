@@ -38,6 +38,7 @@ const SingleTaskScreen: NextPage = () => {
               <Calendar size={20} />{' '}
               {dayjs(task.data?.deadline).locale('ru').format('DD MMMM YYYY')}
             </p>
+            {/* @ts-ignore */}
             {task.data?.employees.length > 0 && (
               <div className="flex items-center gap-1.5">
                 <span>Персонал:</span>

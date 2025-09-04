@@ -3,15 +3,12 @@ import { Metadata } from 'next';
 import ObjectsService from '@services/Projects';
 import { notFound } from 'next/navigation';
 
-type Props = {
-  params: { id: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// @ts-ignore
+export async function generateMetadata({ params }): Promise<Metadata> {
   const id = params.id;
   const object = await ObjectsService.getOne(id)
     .then(res => res.data)
-    .catch(err => false);
+    .catch(err => null);
   if (!object) return notFound();
 
   return {

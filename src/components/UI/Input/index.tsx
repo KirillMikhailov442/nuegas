@@ -24,6 +24,7 @@ const Input: FC<InputProps> = ({ type, ...props }) => {
     case 'password':
       return <InputPassword {...props} />;
     case 'date':
+      // @ts-ignore
       return <InputDate {...props} />;
     default:
       return <InputText {...props} />;

@@ -52,7 +52,7 @@ const EditObjectModal = () => {
         title: String(values.title),
         description: String(values.description),
         customer: String(values.customer),
-        img: values.img,
+        img: values.img as string,
       });
     },
   });

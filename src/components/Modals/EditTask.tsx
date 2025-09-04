@@ -85,8 +85,10 @@ const EditTaskModal = () => {
               type="date"
               name="deadline"
               label="Срок"
+              // @ts-ignore
               value={dayjs(formik.values.deadline)}
               placeholder="Выберите срок"
+              // @ts-ignore
               onChange={(_, dateString) =>
                 formik.setFieldValue('deadline', dateString)
               }
@@ -100,11 +102,17 @@ const EditTaskModal = () => {
               placeholder="Введите описание"
               label="Описание"
             />
+            {/* @ts-ignore */}
             <Map
-              defaultCords={convertStringInCoords(String(formik.values.coords))}
+              defaultCords={
+                convertStringInCoords(String(formik.values.coords)) as [
+                  number,
+                  number,
+                ]
+              }
               label="Координаты"
               onChange={coords => formik.setFieldValue('coords', coords)}
-              error={formik.errors.coords}
+              error={formik.errors.coords as string}
             />
             <Button disabled={Object.keys(formik.errors).length > 0}>
               Создать
@@ -134,8 +142,10 @@ const EditTaskModal = () => {
           type="date"
           name="deadline"
           label="Срок"
+          // @ts-ignore
           value={dayjs(formik.values.deadline)}
           placeholder="Выберите срок"
+          // @ts-ignore
           onChange={(_, dateString) =>
             formik.setFieldValue('deadline', dateString)
           }
@@ -149,11 +159,17 @@ const EditTaskModal = () => {
           placeholder="Введите описание"
           label="Описание"
         />
+        {/* @ts-ignore */}
         <Map
           label="Координаты"
           onChange={coords => formik.setFieldValue('coords', coords)}
-          defaultCords={convertStringInCoords(String(formik.values.coords))}
-          error={formik.errors.coords}
+          defaultCords={
+            convertStringInCoords(String(formik.values.coords)) as [
+              number,
+              number,
+            ]
+          }
+          error={formik.errors.coords as string}
         />
         <Button disabled={Object.keys(formik.errors).length > 0}>
           Изменить

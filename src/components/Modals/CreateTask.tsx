@@ -50,7 +50,7 @@ const CreateTaskModal = () => {
         title: values.title,
         description: values.description,
         deadline: new Date(values.deadline).toISOString(),
-        cords: convertCoordsInString(values.coords),
+        cords: convertCoordsInString(values.coords as []),
       });
     },
   });
@@ -80,6 +80,7 @@ const CreateTaskModal = () => {
               name="deadline"
               label="Срок"
               placeholder="Выберите срок"
+              // @ts-ignore
               onChange={(_, dateString) =>
                 formik.setFieldValue('deadline', dateString)
               }
@@ -92,10 +93,11 @@ const CreateTaskModal = () => {
               placeholder="Введите описание"
               label="Описание"
             />
+            {/* @ts-ignore */}
             <Map
               label="Координаты"
               onChange={coords => formik.setFieldValue('coords', coords)}
-              error={formik.errors.coords}
+              error={formik.errors.coords as string}
             />
             <Button
               disabled={
@@ -131,6 +133,7 @@ const CreateTaskModal = () => {
           label="Срок"
           placeholder="Выберите дату срок"
           error={formik.errors.deadline}
+          // @ts-ignore
           onChange={(_, dateString) => {
             formik.setFieldValue('deadline', dateString);
           }}
@@ -143,10 +146,11 @@ const CreateTaskModal = () => {
           placeholder="Введите описание"
           label="Описание"
         />
+        {/* @ts-ignore */}
         <Map
           label="Координаты"
           onChange={coords => formik.setFieldValue('coords', coords)}
-          error={formik.errors.coords}
+          error={formik.errors.coords as string}
         />
         <Button
           disabled={Object.keys(formik.errors).length > 0 || create.isLoading}

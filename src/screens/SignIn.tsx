@@ -28,7 +28,7 @@ const SignInScreen: NextPage = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           name="email"
-          error={formik.errors.email}
+          error={formik.errors.email as string}
           placeholder="Введите почту"
           label="Email"
           type="email"
@@ -37,7 +37,7 @@ const SignInScreen: NextPage = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           name="password"
-          error={formik.errors.email}
+          error={formik.errors.email as string}
           placeholder="Введите пароль"
           label="Пароль"
           type="password"

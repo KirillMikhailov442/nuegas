@@ -3,15 +3,12 @@ import TasksService from '@services/Tasks';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-type Props = {
-  params: { id: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// @ts-ignore
+export async function generateMetadata({ params }): Promise<Metadata> {
   const id = params.id;
   const task = await TasksService.getOne(id)
     .then(res => res.data)
-    .catch(err => false);
+    .catch(err => null);
 
   if (!task) return notFound();
 

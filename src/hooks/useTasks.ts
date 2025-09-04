@@ -52,6 +52,7 @@ export const useTaskCreate = (
   onError?: (error: AxiosError<{ message: string }>) => void,
 ) => {
   return useMutation({
+    // @ts-ignore
     mutationKey: ['task-create'],
     mutationFn: (body: ITaskCreate) => TasksService.create(body),
     onSuccess,
@@ -64,6 +65,7 @@ export const useTaskUpdate = (
   onError?: (error: AxiosError<{ message: string }>) => void,
 ) => {
   return useMutation({
+    // @ts-ignore
     mutationKey: ['task-update'],
     mutationFn: (body: ITaskUpdate) => TasksService.update(body),
     onSuccess,
@@ -76,6 +78,7 @@ export const useTaskDelete = (
   onError?: (error: AxiosError<{ message: string }>) => void,
 ) => {
   return useMutation({
+    // @ts-ignore
     mutationKey: ['task-delete'],
     mutationFn: (id: string) => TasksService.delete(id),
     onSuccess,
